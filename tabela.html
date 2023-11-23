@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Usuários</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>ID</th>
+            <th>Data de Criação</th>
+            <th>Data de Atualização</th>
+        </tr>
+    </thead>
+    <tbody id="userData">
+        <!-- Dados do formulário serão exibidos aqui -->
+    </tbody>
+</table>
+
+<script>
+$(document).ready(function(){
+    // Faça a requisição AJAX para obter os dados
+    $.ajax({
+        url: 'https://80-lsiqueirajc-mentoriaapi-j0jzzbfvciv.ws-us106.gitpod.io/api', // Atualize com a URL correta da sua rota Laravel
+        contentType: "application/json",
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            // Manipule os dados recebidos e adicione à tabela
+            var userData = response.data;
+            for (var i = 0; i < userData.length; i++) {
+                $('#userData').append('<tr><td>' + userData[i].nome + '</td><td>' + userData[i].id + '</td><td>' + userData[i].created_at + '</td><td>' + userData[i].updated_at + '</td></tr>');
+            }
+        },
+        error: function(error) {
+            console.error('Erro na requisição AJAX');
+            console.error(error);
+        }
+    });
+});
+</script>
+
+</body>
+</html>

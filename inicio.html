@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<form id="userForm">
+    <label for="username">Nome do Usuário:</label>
+    <input type="text" id="username" name="username">
+    <button type="submit">Enviar</button>
+</form>
+
+<script>
+$(document).ready(function(){
+    $('#userForm').submit(function(e){
+        e.preventDefault();
+
+        // Obtenha os dados do formulário
+        var username = $('#username').val();
+
+        // Faça a requisição AJAX
+        $.ajax({
+            url: 'https://80-lsiqueirajc-mentoriaapi-j0jzzbfvciv.ws-us106.gitpod.io/api', // Atualize com a URL correta da sua rota Laravel
+            type: 'POST',
+            data: {
+                username: username
+            },
+            success: function(response) {
+                console.log('Requisição enviada com sucesso!');
+                console.log(response); // Faça o tratamento da resposta aqui
+            },
+            error: function(error) {
+                console.error('Erro na requisição AJAX');
+                console.error(error);
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
