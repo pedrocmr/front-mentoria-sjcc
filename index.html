@@ -20,21 +20,21 @@
 $(document).ready(function(){
     $('#userForm').submit(function(e){
         e.preventDefault();
-
+        
         // Obtenha os dados do formulário
         var nome = $('#nome').val();
         var email = $('#email').val();
-        var telefone = $('#email').val();
-        console.log()
+        var telefone = $('#telefone').val();
+        
 
         // Faça a requisição AJAX
         $.ajax({
-            url: 'https://80-lsiqueirajc-mentoriaapi-j0jzzbfvciv.ws-us106.gitpod.io/api', // Atualize com a URL correta da sua rota Laravel
+            url: 'https://80-lsiqueirajc-mentoriaapi-1y6kcx20ppr.ws-us106.gitpod.io/api', // Atualize com a URL correta da sua rota Laravel
             contentType: "application/json",
             type: 'POST',
             dataType: 'json',
             data: 
-                `{"nome": "${nome}", "email": "${email}"}`
+                `{"nome": "${nome}", "email": "${email}", "telefone": "${telefone}"}`
             ,
             success: function(response) {
                 console.log('Requisição enviada com sucesso!');
@@ -50,19 +50,19 @@ $(document).ready(function(){
 });
 </script>
 
-<!-- <style>
+<style>
     body {
         font-family: 'Arial', sans-serif;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        height: 50vh;
         margin: 0;
     }
 
     form {
-        background-color: #f4f4f4;
-        padding: 20px;
+        background-color: #c92828;
+        padding: 25px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         max-width: 400px;
@@ -82,7 +82,7 @@ $(document).ready(function(){
     }
 
     button {
-        background-color: #4caf50;
+        background-color: #000000;
         color: white;
         padding: 10px 15px;
         border: none;
@@ -92,10 +92,8 @@ $(document).ready(function(){
 
     button:hover {
         background-color: #45a049;
-    }
+    } 
 </style>
 
-
-
 </body>
-</html> -->
+</html>
